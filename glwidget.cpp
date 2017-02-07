@@ -81,7 +81,7 @@ QSize GLWidget::minimumSizeHint() const
 QSize GLWidget::sizeHint() const
 //! [3] //! [4]
 {
-    return QSize(400, 400);
+    return QSize(600, 600);
 }
 //! [4]
 
@@ -131,12 +131,8 @@ void GLWidget::initializeGL()
 
     qglClearColor(qtColorFondo.dark());
 
-   pieza = new QtElemento(this);
-   pieza->setColor(qtColorPieza);
-
-
-
-
+    pieza = new QtElemento(this);
+    pieza->setColor(qtColorPieza);
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
@@ -144,8 +140,8 @@ void GLWidget::initializeGL()
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glEnable(GL_MULTISAMPLE);
-   static GLfloat lightPosition[4] = { 2, 2, 7.0, 1.0 };
-   glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+    static GLfloat lightPosition[4] = { 2, 2, 7.0, 1.0 };
+    glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
     glEnable(GL_TEXTURE_2D);
 
 }
@@ -171,14 +167,14 @@ void GLWidget::resizeGL(int width, int height)
     int side = qMin(width, height);
     glViewport((width-side)/2 , (height-side)/2 , side, side);
 
-   // qDebug()<<side;
+    // qDebug()<<side;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 #ifdef QT_OPENGL_ES_1
-   // glOrthof(-0.5, +0.5, -0.5, +0.5, 4.0, 15.0);
-     glOrthof(-2, +2, -2, +2, 1.0, 15.0);
+    // glOrthof(-0.5, +0.5, -0.5, +0.5, 4.0, 15.0);
+    glOrthof(-2, +2, -2, +2, 1.0, 15.0);
 #else
-   // glOrtho(-0.5, +0.5, -0.5, +0.5, 4.0, 15.0);
+    // glOrtho(-0.5, +0.5, -0.5, +0.5, 4.0, 15.0);
     glOrtho(-2, +2, -2, +2, 1.0, 15.0);
 #endif
     glMatrixMode(GL_MODELVIEW);

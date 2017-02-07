@@ -1,5 +1,3 @@
-
-
 #include "qtelemento.h"
 
 #include <QGLWidget>
@@ -110,11 +108,11 @@ void Geometry::appendFaceted(const QVector3D &a, const QVector3D &n)
 }
 
 Patch::Patch(Geometry *g)
-   : start(g->faces.count())
-   , count(0)
-   , initv(g->vertices.count())
-   , sm(Patch::Smooth)
-   , geom(g)
+    : start(g->faces.count())
+    , count(0)
+    , initv(g->vertices.count())
+    , sm(Patch::Smooth)
+    , geom(g)
 {
     qSetColor(faceColor, QColor(Qt::white));
 }
@@ -259,8 +257,11 @@ QtElemento::~QtElemento()
 
 void QtElemento::setColor(QColor c)
 {
-    for (int i = 0; i < parts.count(); ++i)
+    for (int i = 0; i < parts.count()/2; ++i)
         qSetColor(parts[i]->faceColor, c);
+
+    for (int i = 2; i < parts.count(); ++i)
+           qSetColor(parts[i]->faceColor, QColor(Qt::blue));
 
 
 }
@@ -273,10 +274,13 @@ void QtElemento::buildGeometry( qreal scale)
     qreal ld = m_depth * scale;
 
 
-    RectPrism cross(geom, cw, bt, ld);
+    RectPrism board(geom, cw, bt, ld);
+    RectPrism m2(geom, cw/10, bt*2, ld/10);
+    m2.translate(QVector3D(0,bt+0.5*bt,(cw/2-cw/20)));
 
 
-    parts << cross.parts;
+
+    parts << board.parts<<m2.parts;
 
     geom->finalize();
 }

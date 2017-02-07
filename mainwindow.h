@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QTimer>
 namespace Ui {
 class MainWindow;
 }
@@ -18,12 +18,17 @@ public slots:
     void setLabelX(int x);
     void setLabelY(int y);
     void setLabelZ(int z);
+    void iniciarPuerto();
+    void leerDatos();
+
 
 private:
     Ui::MainWindow *ui;
     QString xLabelFormat;
     QString yLabelFormat;
     QString zLabelFormat;
+    QTimer *timer;
+    int y;
 
 };
 
