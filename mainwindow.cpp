@@ -86,7 +86,7 @@ void MainWindow::actualizarPuertos()
 
 void MainWindow::on_openPort_clicked()
 {
-   QString status;
+    QString status;
     serial->setPortName(ui->puertosBox->currentText());
           serial->setBaudRate(ui->baudRate->currentText().toInt());
           serial->setDataBits(QSerialPort::Data8);
@@ -95,11 +95,11 @@ void MainWindow::on_openPort_clicked()
           serial->setFlowControl(QSerialPort::NoFlowControl);
           if (serial->open(QIODevice::ReadWrite)) {
 
-               status=QString((tr("Connected to %1 : %2, %3, %4, %5, %6")))
-                                .arg(serial->portName()).arg(serial->baudRate()).arg("8")
-                                .arg(" no parity").arg("0ne stop bit").arg("no flow control");
+              status=QString((tr("Connected to %1 : %2, %3, %4, %5, %6")))
+                      .arg(serial->portName()).arg(serial->baudRate()).arg("8")
+                      .arg(" no parity").arg("0ne stop bit").arg("no flow control");
 
-                //connect(serial, &QSerialPort::readyRead, this, &MainWindow::handleReadyRead);
+              //connect(serial, &QSerialPort::readyRead, this, &MainWindow::handleReadyRead);
 
 
           } else {
@@ -108,20 +108,20 @@ void MainWindow::on_openPort_clicked()
               status=(tr("Open error"));
           }
           qDebug()<<status;
-    timer->start(100);
-    ui->baudRate->setEnabled(false);
-    ui->puertosBox->setEnabled(false);
-    ui->openPort->setEnabled(false);
-    ui->closePort->setEnabled(true);
+          timer->start(100);
+          ui->baudRate->setEnabled(false);
+          ui->puertosBox->setEnabled(false);
+          ui->openPort->setEnabled(false);
+          ui->closePort->setEnabled(true);
 
 
 }
 void MainWindow::handleReadyRead()
-  {
+{
     qDebug()<<"SEE";
     QByteArray data = serial->readAll();
     qDebug()<<data;
-  }
+}
 
 void MainWindow::on_closePort_clicked()
 {

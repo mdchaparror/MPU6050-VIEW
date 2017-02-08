@@ -27,7 +27,6 @@ public slots:
     void handleReadyRead();
 private slots:
     void on_openPort_clicked();
-
     void on_closePort_clicked();
 
 private:

@@ -1,9 +1,7 @@
 #include "qtelemento.h"
-
 #include <QGLWidget>
 #include <QMatrix4x4>
 #include <QVector3D>
-
 #include <qmath.h>
 
 static const qreal tee_height = 1;
@@ -261,8 +259,7 @@ void QtElemento::setColor(QColor c)
         qSetColor(parts[i]->faceColor, c);
 
     for (int i = 2; i < parts.count(); ++i)
-           qSetColor(parts[i]->faceColor, QColor(Qt::blue));
-
+        qSetColor(parts[i]->faceColor, QColor(Qt::blue));
 
 }
 
@@ -273,12 +270,9 @@ void QtElemento::buildGeometry( qreal scale)
     qreal bt = m_height * scale;
     qreal ld = m_depth * scale;
 
-
     RectPrism board(geom, cw, bt, ld);
     RectPrism m2(geom, cw/10, bt*2, ld/10);
     m2.translate(QVector3D(0,bt+0.5*bt,(cw/2-cw/20)));
-
-
 
     parts << board.parts<<m2.parts;
 
