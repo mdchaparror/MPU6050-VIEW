@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 namespace Ui {
 class MainWindow;
 }
@@ -18,9 +20,15 @@ public slots:
     void setLabelX(int x);
     void setLabelY(int y);
     void setLabelZ(int z);
-    void iniciarPuerto();
     void leerDatos();
+    void actualizarPuertos();
 
+
+    void handleReadyRead();
+private slots:
+    void on_openPort_clicked();
+
+    void on_closePort_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -29,6 +37,7 @@ private:
     QString zLabelFormat;
     QTimer *timer;
     int y;
+    QSerialPort * serial;
 
 };
 
