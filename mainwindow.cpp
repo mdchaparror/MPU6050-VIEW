@@ -16,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
     xLabelFormat="rot X: %1";
     yLabelFormat="rot Y: %1";
     zLabelFormat="rot Z: %1";
-    y=0;
     connect(ui->openglWidget,SIGNAL(xRotationChanged(int)),this,SLOT(setLabelX(int)));
     connect(ui->openglWidget,SIGNAL(yRotationChanged(int)),this,SLOT(setLabelY(int)));
     connect(ui->openglWidget,SIGNAL(zRotationChanged(int)),this,SLOT(setLabelZ(int)));
@@ -31,8 +30,6 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->baudRate->addItem(QString::number(baud));
     }
     ui->baudRate->setCurrentText(QString::number(115200));
-
-
 
 }
 

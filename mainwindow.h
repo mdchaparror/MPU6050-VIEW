@@ -36,7 +36,6 @@ private:
     QString yLabelFormat;
     QString zLabelFormat;
     QTimer *timer;
-    int y;
     QSerialPort * serial;
     QString buffer;
 

@@ -271,8 +271,8 @@ void QtElemento::buildGeometry( qreal scale)
     qreal ld = m_depth * scale;
 
     RectPrism board(geom, cw, bt, ld);
-    RectPrism m2(geom, cw/10, bt*2, ld/10);
-    m2.translate(QVector3D(0,bt+0.5*bt,(cw/2-cw/20)));
+    RectPrism m2(geom, cw, bt/10, ld/10);
+    m2.translate(QVector3D(0,bt/2,(cw/2-cw/20)));
 
     parts << board.parts<<m2.parts;
 
