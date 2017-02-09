@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void process(QString s);
 public slots:
     void setLabelX(int x);
     void setLabelY(int y);
@@ -37,6 +38,7 @@ private:
     QTimer *timer;
     int y;
     QSerialPort * serial;
+    QString buffer;
 
 };
 
